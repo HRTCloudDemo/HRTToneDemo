@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+    function getTone() {
+        fetch("/tone", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'mode': 'cors'
+            },
+            body: JSON.stringify({
+               texts: [document.getElementById("text1").value, document.getElementById("text2").value]
+            })
+        })
+        .then((response) => {
+            var contentType = response.headers.get("content-type");
+            if(contentType && contentType.includes("application/json")) {
+               return response.json();
+            }
+            throw new TypeError("Oops, we haven't got JSON!");
+        })
+        .then((response) => { 
+            console.log("response:" +  JSON.stringify(response));
+            if (response.mood) {
+              document.getElementById("mood").value = response.mood;
+            }
+        })
+    }
+</script>
+
+<head>
+  <meta charset="utf-8">
+  <title>HRT Tone Analyzer Demo</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+    <body>
+        <h2>HRT Tone Analyzer Demo</h2>
+        <p>
+        <input id="text1" type="text" name="text1" value="I really like this" />
+        <p><input id = "text2" type="text" name="text2" value=""" />
+        <p><button name="Submit" onclick="getTone();">Submit</button>
+        <p>Mood: <input id="mood" type="text" name="mood" value="" readonly>
+    </body>
+</html>

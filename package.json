@@ -1,0 +1,25 @@
+{
+  "name": "tone-app",
+  "main": "app.js",
+  "description": "Tone Anaylzer Demo",
+  "version": "0.1.1",
+  "private": false,
+  "engines": {
+    "node": "8.*"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cfenv": "^1.0.x",
+    "express": "^4.15.x",
+    "watson-developer-cloud": "^2.39.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0"
+  },
+  "author": "Martin Henke",
+  "devDependencies": {
+    "eslint": "^4.7.2",
+    "eslint-config-loopback": "^8.0.0"
+  }
+}
