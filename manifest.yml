@@ -1,5 +1,0 @@
----
-applications:
- - name: tone-app
-   random-route: true
-   memory: 256M
