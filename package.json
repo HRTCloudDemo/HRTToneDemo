@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "cfenv": "^1.1.0",
-    "express": "^4.16.0",
-    "watson-developer-cloud": "^3.3.0",
+    "express": "^4.16.3",
+    "watson-developer-cloud": "^3.4.1",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1"
   },
