@@ -66,7 +66,7 @@ app.post('/tone', (req, res, next) => {
   let toneRequest = createToneRequest(req.body);
 
   if (toneRequest) {
-    toneAnalyzer.tone_chat(toneRequest, (err, response) => {
+    toneAnalyzer.toneChat(toneRequest, (err, response) => {
       if (err) {
         return next(err);
       }
