@@ -5,21 +5,21 @@
   "version": "0.1.1",
   "private": false,
   "engines": {
-    "node": "8.11.1"
+    "node": "10.13.0"
   },
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "cfenv": "^1.1.0",
-    "express": "^4.16.3",
-    "watson-developer-cloud": "^3.4.1",
-    "body-parser": "^1.18.2",
-    "dotenv": "^5.0.1"
+    "express": "^4.16.4",
+    "watson-developer-cloud": "^3.13.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0"
   },
   "author": "Martin Henke",
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-loopback": "^10.0.0"
+    "eslint": "^5.8.0",
+    "eslint-config-loopback": "^12.0.0"
   }
 }
