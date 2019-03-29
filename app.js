@@ -1,15 +1,15 @@
 'use strict';
 
-let express = require('express');
-let app = express();
-let ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-let bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+const bodyParser = require('body-parser');
 
 require('dotenv').config({silent: true});
 
 // Create the service wrapper
-let toneAnalyzer = new ToneAnalyzerV3({
-  version_date: '2017-09-21',
+const toneAnalyzer = new ToneAnalyzerV3({
+  version: '2017-09-21',
 });
 
 app.use(bodyParser.json());
@@ -23,7 +23,7 @@ function createToneRequest (request) {
     toneChatRequest = {utterances: []};
 
     for (let i in request.texts) {
-      let utterance = {text: request.texts[i]};
+      const utterance = {text: request.texts[i]};
       toneChatRequest.utterances.push(utterance);
     }
   }
@@ -39,7 +39,7 @@ function happyOrUnhappy (response) {
   let unhappyValue = 0;
 
   for (let i in response.utterances_tone) {
-    let utteranceTones = response.utterances_tone[i].tones;
+    const utteranceTones = response.utterances_tone[i].tones;
     for (let j in utteranceTones) {
       if (happyTones.includes(utteranceTones[j].tone_id)) {
         happyValue = happyValue + utteranceTones[j].score;
@@ -57,20 +57,20 @@ function happyOrUnhappy (response) {
   }
 }
 
-/* Example 
+/* Example
 {
   "texts": ["I do not like what I see", "I like very much what you have said."]
 }
 */
 app.post('/tone', (req, res, next) => {
-  let toneRequest = createToneRequest(req.body);
+  const toneRequest = createToneRequest(req.body);
 
   if (toneRequest) {
     toneAnalyzer.toneChat(toneRequest, (err, response) => {
       if (err) {
         return next(err);
       }
-      let answer = {mood: happyOrUnhappy(response)};
+      const answer = {mood: happyOrUnhappy(response)};
       return res.json(answer);
     });
   }
@@ -79,8 +79,8 @@ app.post('/tone', (req, res, next) => {
   }
 });
 
-let port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-app.listen(port, () =>  {
+app.listen(port, () => {
   console.log('Server running on port: %d', port);
 });
